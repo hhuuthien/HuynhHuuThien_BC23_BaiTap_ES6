@@ -1,4 +1,4 @@
-function User() {
+export function User() {
   this.ten = "";
   this.ho = "";
   this.email = "";
