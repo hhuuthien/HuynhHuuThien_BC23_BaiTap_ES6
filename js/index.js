@@ -17,17 +17,23 @@ let renderUserInfo = (user) => {
   document.querySelector("#signup-form .content #steps-uid-0-p-2 .fieldset-content div:last-child").innerHTML = stringHTML;
 };
 
-let btnFinish = document.querySelector("#signup-form .actions ul li:last-child a");
-
-btnFinish.onclick = () => {
-  let user = new User();
-
+let getInfoAndAddToUser = (user) => {
   let arrayInput = document.querySelectorAll("#signup-form input, #signup-form select");
 
   for (let input of arrayInput) {
     let { id, value } = input;
     user[id] = value;
   }
+};
 
-  renderUserInfo(user);
+let btnFinish = document.querySelector("#signup-form .actions ul li:last-child a");
+
+btnFinish.onclick = () => {
+  if (btnFinish.innerHTML === "Finish") {
+    let user = new User();
+    getInfoAndAddToUser(user);
+    renderUserInfo(user);
+  } else {
+    return;
+  }
 };
